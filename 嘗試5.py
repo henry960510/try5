@@ -94,7 +94,24 @@ with st.form("add_restaurant_form", clear_on_submit=True):
         st.session_state.restaurant_db.append(new_entry)
         save_data(st.session_state.restaurant_db)
         st.toast(f"感謝貢獻！{name} 已加入清單！", icon='🎉')
-        st.rerun()
+        st.rerun() 
+        
+        #以下沒什麼意義-----------------
+        if submitted and name:
+           if name == "我想要吃大雞雞":
+               for c in range(10): 
+                   joke_entry = {"name": "雞雞", "price": 0, "rating": 5.0}
+                   st.session_state.restaurant_db.append(joke_entry)
+           else:
+               new_entry = {"name": name, "price": int(price), "rating": float(rating)}
+               st.session_state.restaurant_db.append(new_entry)
+        
+           save_data(st.session_state.restaurant_db)
+           st.toast("處理完成！")
+           st.rerun() 
+        #結束-----------------
+
+
 
 # --- 6. 數據統計與展示 ---
 st.divider()
